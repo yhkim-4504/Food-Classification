@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-c", "--config", help='config yaml path', default='config.yaml')
 parser.add_argument("-m", "--model", help='model name', default='SwinV2_Base_256')
 parser.add_argument("-o", "--optimizer", help='optimizer name', default='AdamW')
-parser.add_argument("-s", "--scheduler", help='scheduler_name', default='NoneScheduler')
+parser.add_argument("-s", "--scheduler", help='scheduler_name', default='CustomCosineAnnealingWarmupRestarts')
 args = parser.parse_args()
 
 CONFIG_SELECT_DICT = {

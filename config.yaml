@@ -12,7 +12,7 @@ dataset:
 
 trainer:
   experiment_name: Food_Classification
-  run_name: Base_01
+  run_name: Base2-2
   cuda_device: '0'
   num_workers: 8  # Dataloader worker
   apply_aug: True  # Train시 Augmentation 적용여부
@@ -21,16 +21,16 @@ trainer:
   train_custom_weights: {}
   
   # Lr, Loss_value, Batch_size
-  lr: 1.0e-4
+  lr: 1.0e-5
   train_batch_size: 16
   valid_batch_size: 32
 
   # Epoch, chkpoint params
   start_epoch: 1
-  target_epoch: 350
+  target_epoch: 50
   cut_iter: -1  # epoch당 iteration limit, -1 : 모든 iteration 학습
-  min_chkpoint_epoch: 20  # 최소 체크포인트 저장 에포크
-  chkpoint_metric: 'valid_loss'  # ['valid_acc', 'valid_loss']
+  min_chkpoint_epoch: 0  # 최소 체크포인트 저장 에포크
+  chkpoint_metric: 'valid_acc'  # ['valid_acc', 'valid_loss']
 
 optimizer:
   SGD:
@@ -44,8 +44,8 @@ scheduler:
   CustomCosineAnnealingWarmupRestarts:
     cycle_mult: 1
     min_lr: 1.0e-6  # 한 사이클당 최저 lr 값
-    warmup_steps: 50
-    gamma_last_lr: 3.5e-5
+    warmup_steps: 20
+    gamma_last_lr: 5.0e-5
     # first_cycle_steps: 495  # len(train_loader)로 자동적용
     # gamma: 0.9958095161851701  # gamma_min_lr을 설정하면 마지막 epoch에 해당값이 되는 gamma값 자동계산
   ExpTargetIterScheduler:
