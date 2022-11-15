@@ -30,7 +30,7 @@ trainer:
   target_epoch: 350
   cut_iter: -1  # epoch당 iteration limit, -1 : 모든 iteration 학습
   min_chkpoint_epoch: 20  # 최소 체크포인트 저장 에포크
-  chkpoint_metric: 'loss'  # ['valid_acc', 'valid_loss']
+  chkpoint_metric: 'valid_loss'  # ['valid_acc', 'valid_loss']
 
 optimizer:
   SGD:

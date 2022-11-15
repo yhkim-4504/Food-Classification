@@ -135,7 +135,7 @@ class Trainer:
             _, indices = torch.max(pred, axis=1)
             correct_sum += (indices==label_batch).sum().item()
             total_sum += len(label_batch)
-            acc = correct_sum/total_sum
+            acc = correct_sum / total_sum * 100
 
             # Print info
             if verbose:
@@ -169,7 +169,7 @@ class Trainer:
                 _, indices = torch.max(pred, axis=1)
                 correct_sum += (indices==label_batch).sum().item()
                 total_sum += len(label_batch)
-                acc = correct_sum/total_sum
+                acc = correct_sum / total_sum * 100
 
                 # Print info
                 if verbose:
@@ -187,8 +187,6 @@ class Trainer:
         # config variables
         target_epoch = self.config['trainer']['target_epoch']
         min_chkpoint_epoch = self.config['trainer']['min_chkpoint_epoch']
-        
-        metric = self.config['trainer']['metric']
         
         # Set Chkpoint metric variables
         chkpoint_metric = self.config['trainer']['chkpoint_metric']
