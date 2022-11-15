@@ -1,0 +1,25 @@
+# Folder
+prediction/
+OLD_TRAINED/
+deeplab_data/
+.ipynb_checkpoints/
+backups/
+dataset/
+train_results/
+**/__pycache__/
+mlruns/
+chkpoint_weights/
+
+# Files
+**/*.??g
+*.ipynb
+*.pdf
+*.pyc
+*.pth
+*.npz
+config2.yaml
+run_trainer2.py
+test2.py
+*.txt
+*.lst
+*copy*.*
