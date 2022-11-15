@@ -21,19 +21,16 @@ trainer:
   train_custom_weights: {}
   
   # Lr, Loss_value, Batch_size
-  lr: 7.5e-5
-  train_batch_size: 8
-  valid_batch_size: 16
+  lr: 1.0e-4
+  train_batch_size: 16
+  valid_batch_size: 32
 
   # Epoch, chkpoint params
   start_epoch: 1
   target_epoch: 350
   cut_iter: -1  # epoch당 iteration limit, -1 : 모든 iteration 학습
   min_chkpoint_epoch: 20  # 최소 체크포인트 저장 에포크
-  chkpoint_metric: 'loss'  # 체크포인트 갱신기준-> acc, loss
-  
-  # Metric params
-  metric: valid_acc  # ['valid_acc', 'valid_loss']
+  chkpoint_metric: 'loss'  # ['valid_acc', 'valid_loss']
 
 optimizer:
   SGD:

@@ -196,7 +196,6 @@ class Trainer:
             compare_type = 'min'
             self.chk_metric_scores.append(float('inf'))
         elif 'acc' in chkpoint_metric:
-            chkpoint_metric = f'{metric}_{chkpoint_metric}'
             compare_type = 'max'
             self.chk_metric_scores.append(float('-inf'))
         else:
