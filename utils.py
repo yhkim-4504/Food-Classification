@@ -5,11 +5,14 @@ from os.path import isdir, basename, join
 from glob import glob
 
 
-def split_train_valid(dataset_path, train_ratio, rnd_state):
+def split_train_valid(dataset_path, train_ratio, label_to_idx, rnd_state):
     label_to_idx = {basename(p): i for i, p in enumerate(sorted(glob(join(dataset_path, '*')))) if isdir(p)}
     
     random.seed(rnd_state)
-    img_paths = [x for x in sorted(glob(join(dataset_path, '*/*.*g')))]
+    img_paths = []
+    for label in label_to_idx:
+        img_paths.extend(glob(join(dataset_path, label, '*.*g')))
+    img_paths.sort()
     
     trainset_paths = random.sample(img_paths, round(len(img_paths)*train_ratio))
     validset_paths = [p for p in img_paths if p not in trainset_paths]

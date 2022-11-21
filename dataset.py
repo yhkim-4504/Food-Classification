@@ -4,6 +4,7 @@ from torchvision import transforms
 from torch.utils.data import Dataset
 from utils import pad_to_square
 
+LABEL_TO_IDX = {'jeyuk_bokkeum': 0, 'kimbap': 1, 'omurice': 2, 'pork_cutlet': 3, 'ramen': 4, 'samgyetang': 5, 'tteokbokki': 6}
 
 class FoodDataset(Dataset):
     def __init__(self, img_paths, label_to_idx, img_shape, apply_aug, **kwargs):

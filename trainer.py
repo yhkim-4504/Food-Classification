@@ -6,7 +6,7 @@ import mlflow
 matplotlib.use('agg')  # 에러발생방지
 from torch.utils.data.sampler import RandomSampler, SequentialSampler
 from pprint import pformat
-from dataset import FoodDataset
+from dataset import FoodDataset, LABEL_TO_IDX
 from torch.nn.modules.loss import CrossEntropyLoss
 from custom_layers import *
 from utils import split_train_valid
@@ -48,7 +48,8 @@ class Trainer:
         if not test_mode: mlflow.log_param('Parameters', self.total_params)
         
         # Load Dataset
-        label_to_idx, trainset_paths, validset_paths = split_train_valid(self.config['dataset']['dataset_path'], self.config['dataset']['train_valid_split_ratio'], self.config['dataset']['random_sate'])
+        label_to_idx, trainset_paths, validset_paths = split_train_valid(self.config['dataset']['dataset_path'], self.config['dataset']['train_valid_split_ratio'],
+            LABEL_TO_IDX, self.config['dataset']['random_sate'])
         self.trainset = FoodDataset(trainset_paths, label_to_idx=label_to_idx, apply_aug=config['trainer']['apply_aug'], **config['dataset'])
         self.validset = FoodDataset(validset_paths, label_to_idx=label_to_idx, apply_aug=False, **config['dataset'])
 
